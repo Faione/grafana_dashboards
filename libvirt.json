@@ -776,8 +776,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -880,8 +879,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -1022,8 +1020,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -1126,8 +1123,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -1201,6 +1197,6 @@
     "timezone": "",
     "title": "VM",
     "uid": "d03b2ad1-acb5-4889-b5ea-5f8613995b07",
-    "version": 20,
+    "version": 21,
     "weekStart": ""
 }

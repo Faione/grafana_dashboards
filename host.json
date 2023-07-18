@@ -225,7 +225,7 @@
                     },
                     "editorMode": "code",
                     "expr": "node_cpu_scaling_frequency_hertz{instance=\"worknode:9100\", job=\"node_exporter\", cpu=\"131\"} / 1000 / 1000",
-                    "legendFormat": "{{cpu}}",
+                    "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
                 }
@@ -434,7 +434,7 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s]))",
+                    "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "legendFormat": "receive",
                     "range": true,
                     "refId": "A"
@@ -445,7 +445,7 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s]))",
+                    "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "hide": false,
                     "legendFormat": "transmit",
                     "range": true,
@@ -538,7 +538,7 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s]))",
+                    "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "legendFormat": "receive",
                     "range": true,
                     "refId": "A"
@@ -549,7 +549,7 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s]))",
+                    "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "hide": false,
                     "legendFormat": "transmit",
                     "range": true,
@@ -654,7 +654,7 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s])",
+                    "expr": "sum(irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "legendFormat": "{{device}}",
                     "range": true,
                     "refId": "A"
@@ -679,6 +679,6 @@
     "timezone": "",
     "title": "Host",
     "uid": "a95e533c-661b-434d-b1c8-6271733b22ca",
-    "version": 8,
+    "version": 12,
     "weekStart": ""
 }

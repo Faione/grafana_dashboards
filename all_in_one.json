@@ -108,7 +108,7 @@
                     "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_user{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])), 0) / 1000",
                     "legendFormat": "host_cpu_vcpu_time_user",
                     "range": true,
-                    "refId": "1OPYL"
+                    "refId": "3ZYUg"
                 },
                 {
                     "datasource": {
@@ -120,7 +120,7 @@
                     "hide": false,
                     "legendFormat": "host_cpu_vcpu_time_sys",
                     "range": true,
-                    "refId": "Uz0mD"
+                    "refId": "iPOYF"
                 },
                 {
                     "datasource": {
@@ -129,9 +129,9 @@
                     },
                     "editorMode": "code",
                     "expr": "node_cpu_scaling_frequency_hertz{instance=\"worknode:9100\", job=\"node_exporter\", cpu=\"131\"} / 1000 / 1000",
-                    "legendFormat": "host_cpu_scaling_freq_mhz_{{cpu}}",
+                    "legendFormat": "host_cpu_scaling_freq_mhz",
                     "range": true,
-                    "refId": "wCmG8"
+                    "refId": "dMF1h"
                 },
                 {
                     "datasource": {
@@ -142,7 +142,7 @@
                     "expr": "100 * (1- (node_memory_MemFree_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Buffers_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Cached_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}) \r\n / node_memory_MemTotal_bytes{instance=\"worknode:9100\", job=\"node_exporter\"})",
                     "legendFormat": "host_memory_usage",
                     "range": true,
-                    "refId": "uJTL6"
+                    "refId": "J0H3c"
                 },
                 {
                     "datasource": {
@@ -150,10 +150,10 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s]))",
+                    "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "legendFormat": "host_network_io_bytes_receive",
                     "range": true,
-                    "refId": "KWPec"
+                    "refId": "mdK6e"
                 },
                 {
                     "datasource": {
@@ -161,11 +161,11 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s]))",
+                    "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "hide": false,
                     "legendFormat": "host_network_io_bytes_transmit",
                     "range": true,
-                    "refId": "O2Qqw"
+                    "refId": "fmVVV"
                 },
                 {
                     "datasource": {
@@ -173,10 +173,10 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s]))",
+                    "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "legendFormat": "host_network_io_packets_receive",
                     "range": true,
-                    "refId": "SLz6Z"
+                    "refId": "bP6ig"
                 },
                 {
                     "datasource": {
@@ -184,11 +184,11 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s]))",
+                    "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "hide": false,
                     "legendFormat": "host_network_io_packets_transmit",
                     "range": true,
-                    "refId": "kaATu"
+                    "refId": "MQuhb"
                 },
                 {
                     "datasource": {
@@ -196,10 +196,10 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s])",
+                    "expr": "sum(irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "legendFormat": "host_block_io_bytes_{{device}}",
                     "range": true,
-                    "refId": "N6ZOU"
+                    "refId": "JnMmA"
                 },
                 {
                     "datasource": {
@@ -210,7 +210,7 @@
                     "expr": "clamp_min(irate(libvirt_domain_cpu_time_sys{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s]), 0) / 1000",
                     "legendFormat": "vm_cpu_time_sys",
                     "range": true,
-                    "refId": "IgfLv"
+                    "refId": "Yng9Y"
                 },
                 {
                     "datasource": {
@@ -222,7 +222,7 @@
                     "hide": false,
                     "legendFormat": "vm_cpu_time_user",
                     "range": true,
-                    "refId": "7bvcp"
+                    "refId": "9GQRN"
                 },
                 {
                     "datasource": {
@@ -233,7 +233,7 @@
                     "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"cpu_cycles\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 1)",
                     "legendFormat": "vm_cpu_cpi",
                     "range": true,
-                    "refId": "pJURN"
+                    "refId": "gczm1"
                 },
                 {
                     "datasource": {
@@ -244,7 +244,7 @@
                     "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s])",
                     "legendFormat": "vm_cpu_ips",
                     "range": true,
-                    "refId": "amRFa"
+                    "refId": "oSp8j"
                 },
                 {
                     "datasource": {
@@ -255,7 +255,7 @@
                     "expr": "sum(irate(libvirt_domain_vcpu_time_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain) / 1000",
                     "legendFormat": "vm_cpu_vcpu_time",
                     "range": true,
-                    "refId": "62qal"
+                    "refId": "uiwNR"
                 },
                 {
                     "datasource": {
@@ -266,7 +266,7 @@
                     "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"context_switch\"}[3s]) , 0)",
                     "legendFormat": "vm_cpu_context_switch",
                     "range": true,
-                    "refId": "Uvmni"
+                    "refId": "NIZ55"
                 },
                 {
                     "datasource": {
@@ -277,7 +277,7 @@
                     "expr": "1000 * clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\",instance=\"worknode:9177\", job=\"libvirt_exporter\",event=\"cache_misses\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 0)",
                     "legendFormat": "vm_cache_mkpi",
                     "range": true,
-                    "refId": "VmzYO"
+                    "refId": "t47A1"
                 },
                 {
                     "datasource": {
@@ -288,7 +288,7 @@
                     "expr": "100 * (libvirt_domain_memory_stats_available_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}\r\n - libvirt_domain_memory_stats_unused_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"})\r\n / libvirt_domain_memory_stats_actual_balloon_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}",
                     "legendFormat": "vm_mem_usage",
                     "range": true,
-                    "refId": "jzHYQ"
+                    "refId": "Wvedq"
                 },
                 {
                     "datasource": {
@@ -299,7 +299,7 @@
                     "expr": "sum(irate(libvirt_domain_interface_stats_receive_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance) / 1024",
                     "legendFormat": "vm_network_io_bytes_receive",
                     "range": true,
-                    "refId": "vnIFQ"
+                    "refId": "TOdbv"
                 },
                 {
                     "datasource": {
@@ -311,7 +311,7 @@
                     "hide": false,
                     "legendFormat": "vm_network_io_bytes_transmit",
                     "range": true,
-                    "refId": "4Q8Sw"
+                    "refId": "ersh7"
                 },
                 {
                     "datasource": {
@@ -322,7 +322,7 @@
                     "expr": "sum(irate(libvirt_domain_interface_stats_receive_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance)",
                     "legendFormat": "vm_network_io_packets_receive",
                     "range": true,
-                    "refId": "pljlb"
+                    "refId": "MtsbC"
                 },
                 {
                     "datasource": {
@@ -334,7 +334,7 @@
                     "hide": false,
                     "legendFormat": "vm_network_io_packets_transmit",
                     "range": true,
-                    "refId": "NcAZU"
+                    "refId": "JAIE9"
                 },
                 {
                     "datasource": {
@@ -345,7 +345,7 @@
                     "expr": "sum(irate(libvirt_domain_block_stats_read_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain)",
                     "legendFormat": "vm_block_io_bytes_read",
                     "range": true,
-                    "refId": "ofckO"
+                    "refId": "J3fq3"
                 },
                 {
                     "datasource": {
@@ -357,7 +357,7 @@
                     "hide": false,
                     "legendFormat": "vm_block_io_bytes_write",
                     "range": true,
-                    "refId": "Oduhk"
+                    "refId": "11Yjp"
                 },
                 {
                     "datasource": {
@@ -368,7 +368,7 @@
                     "expr": "sum(irate(libvirt_domain_block_stats_write_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance, job)",
                     "legendFormat": "vm_block_io_requests_write",
                     "range": true,
-                    "refId": "hfn03"
+                    "refId": "gzBC1"
                 },
                 {
                     "datasource": {
@@ -380,7 +380,7 @@
                     "hide": false,
                     "legendFormat": "vm_block_io_requests_read",
                     "range": true,
-                    "refId": "JOK7C"
+                    "refId": "usQxc"
                 }
             ],
             "title": "ALL IN ONE!",
