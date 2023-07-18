@@ -330,7 +330,7 @@
                     },
                     "editorMode": "code",
                     "expr": "100 * (1- (node_memory_MemFree_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Buffers_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Cached_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}) \r\n / node_memory_MemTotal_bytes{instance=\"worknode:9100\", job=\"node_exporter\"})",
-                    "legendFormat": "{{instance}}",
+                    "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
                 }
@@ -617,8 +617,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -680,6 +679,6 @@
     "timezone": "",
     "title": "Host",
     "uid": "a95e533c-661b-434d-b1c8-6271733b22ca",
-    "version": 7,
+    "version": 8,
     "weekStart": ""
 }

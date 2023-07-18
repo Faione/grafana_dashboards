@@ -4,12 +4,14 @@ import sys
 import random
 import string
 
+# 从所有字母和数字中生成随机字符串
 def generate_random_string(length):
-    # 从所有字母和数字中生成随机字符串
     characters = string.ascii_letters + string.digits
     random_string = ''.join(random.choice(characters) for _ in range(length))
     return random_string
 
+# 读取每个panel中的 target
+# 将 target 的 legend 命名为 namespace + subsystem + title + [name]
 def read_targets(file_name, target_id_len = 5):
     with open(file_name, 'r') as f:
         data = json.load(f)
