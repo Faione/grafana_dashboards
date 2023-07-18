@@ -1,0 +1,444 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 5,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 0
+            },
+            "id": 1,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_user[3s])) by (instance), 0) / 1000",
+                    "legendFormat": "host_vms_cpu_usr",
+                    "range": true,
+                    "refId": "vm_cpu_usr"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_sys[3s])) by (instance), 0) / 1000",
+                    "hide": false,
+                    "legendFormat": "host_vms_cpu_sys",
+                    "range": true,
+                    "refId": "vm_cpu_sys"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "node_cpu_scaling_frequency_hertz{cpu=\"131\"} / 1000 / 1000",
+                    "hide": false,
+                    "legendFormat": "host_cpu_freq{{cpu}}",
+                    "range": true,
+                    "refId": "A"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "100 * (1- (node_memory_MemFree_bytes + node_memory_Buffers_bytes +node_memory_Cached_bytes) /on(instance, job) node_memory_MemTotal_bytes)",
+                    "hide": false,
+                    "legendFormat": "host_mem_usage",
+                    "range": true,
+                    "refId": "B"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s])) by (instance, job)",
+                    "hide": false,
+                    "legendFormat": "host_net_bytes_receive",
+                    "range": true,
+                    "refId": "C"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s])) by (instance, job)",
+                    "hide": false,
+                    "legendFormat": "host_net_bytes_transmit",
+                    "range": true,
+                    "refId": "D"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s])) by (instance, job)",
+                    "legendFormat": "host_net_packets_receive",
+                    "range": true,
+                    "refId": "E"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s])) by (instance, job)",
+                    "hide": false,
+                    "legendFormat": "host_net_packets_transmit",
+                    "range": true,
+                    "refId": "F"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_disk_read_bytes_total[10s])) by (instance, job)",
+                    "legendFormat": "host_disk_read_bytes",
+                    "range": true,
+                    "refId": "G"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "clamp_min(irate(libvirt_domain_cpu_time_sys{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s]), 0) / 1000",
+                    "legendFormat": "vm_cpu_sys",
+                    "range": true,
+                    "refId": "H"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "clamp_min(irate(libvirt_domain_cpu_time_user{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s]), 0) / 1000",
+                    "hide": false,
+                    "legendFormat": "vm_cpu_user",
+                    "range": true,
+                    "refId": "I"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", event=\"cpu_cycles\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", event=\"instructions\"}[3s]), 1)",
+                    "legendFormat": "vm_cpi",
+                    "range": true,
+                    "refId": "J"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", event=\"instructions\"}[3s])",
+                    "legendFormat": "ips",
+                    "range": true,
+                    "refId": "K"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_vcpu_time_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])) by(domain) / 1000",
+                    "legendFormat": "vm_vcpu_time",
+                    "range": true,
+                    "refId": "L"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", event=\"context_switch\"}[3s]), 0)",
+                    "legendFormat": "vm_context_switch",
+                    "range": true,
+                    "refId": "M"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "1000 * clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\",instance=\"worknode:9177\",event=\"cache_misses\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", event=\"instructions\"}[3s]), 0)",
+                    "legendFormat": "vm_cache_mkpi",
+                    "range": true,
+                    "refId": "N"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "100 * (libvirt_domain_memory_stats_available_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"} - libvirt_domain_memory_stats_unused_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}) / libvirt_domain_memory_stats_actual_balloon_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}",
+                    "legendFormat": "vm_mem_usage",
+                    "range": true,
+                    "refId": "O"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_receive_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])) by(domain, instance) / 1024",
+                    "legendFormat": "vm_net_bytes_receive",
+                    "range": true,
+                    "refId": "P"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_transmit_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])) by(domain, instance) / 1024",
+                    "hide": false,
+                    "legendFormat": "vm_net_bytes_transmit",
+                    "range": true,
+                    "refId": "Q"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_receive_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])) by(domain, instance)",
+                    "legendFormat": "vm_net_packets_receive",
+                    "range": true,
+                    "refId": "R"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_transmit_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])) by(domain, instance)",
+                    "hide": false,
+                    "legendFormat": "vm_net_packets_transmit",
+                    "range": true,
+                    "refId": "S"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_block_stats_read_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])) by(domain)",
+                    "legendFormat": "vm_block_bytes_read",
+                    "range": true,
+                    "refId": "T"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_block_stats_write_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])) by(domain)",
+                    "hide": false,
+                    "legendFormat": "vm_block_bytes_write",
+                    "range": true,
+                    "refId": "U"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(libvirt_domain_block_stats_write_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])",
+                    "legendFormat": "vm_block_requests_write_{{target_device}}",
+                    "range": true,
+                    "refId": "V"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(libvirt_domain_block_stats_read_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\"}[3s])",
+                    "hide": false,
+                    "legendFormat": "vm_block_requests_read_{{target_device}}",
+                    "range": true,
+                    "refId": "W"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(envoy_redis_command_get_latency_count[4s]) + irate(envoy_redis_command_set_latency_count[4s])",
+                    "legendFormat": "qos_redis_qps",
+                    "range": true,
+                    "refId": "X"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "histogram_quantile(0.99, sum by(le) (irate(envoy_redis_command_set_latency_bucket[$__rate_interval])))",
+                    "legendFormat": "qos_redis_set_latency",
+                    "range": true,
+                    "refId": "Y"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "histogram_quantile(0.99, sum by(le) (irate(envoy_redis_command_get_latency_bucket[$__rate_interval])))",
+                    "hide": false,
+                    "legendFormat": "qos_redis_get_latency",
+                    "range": true,
+                    "refId": "Z"
+                }
+            ],
+            "title": "ALL IN ONE!",
+            "type": "timeseries"
+        }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-6h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "ALL IN ONE!",
+    "uid": "dbdcedb4-39e0-4da6-9414-03050e8e7e3f",
+    "version": 1,
+    "weekStart": ""
+}
