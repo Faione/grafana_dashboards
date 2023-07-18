@@ -23,11 +23,11 @@ def read_targets(file_name, target_id_len = 5):
             current_subsystem = panel["title"]
         elif panel["type"] == "timeseries":
             # do timeseries
-
+            current_name = panel["title"]
             for target in panel["targets"]:
                 target["refId"] = generate_random_string(target_id_len)
 
-                legend = [current_namespace, current_subsystem]
+                legend = [current_namespace, current_subsystem, current_name]
                 if target["legendFormat"] != "__auto":
                     legend.append(target["legendFormat"])
                     

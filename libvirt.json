@@ -316,7 +316,7 @@
                     },
                     "editorMode": "code",
                     "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s])",
-                    "legendFormat": "{{domain}}",
+                    "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
                 }
@@ -408,7 +408,7 @@
                     },
                     "editorMode": "code",
                     "expr": "sum(irate(libvirt_domain_vcpu_time_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain) / 1000",
-                    "legendFormat": "{{domain}}",
+                    "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
                 }
@@ -499,8 +499,8 @@
                         "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
                     "editorMode": "code",
-                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"context_switch\"}[3s]), 0)",
-                    "legendFormat": "{{domain}}",
+                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"context_switch\"}[3s]) , 0)",
+                    "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
                 }
@@ -710,7 +710,7 @@
                     },
                     "editorMode": "code",
                     "expr": "100 * (libvirt_domain_memory_stats_available_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}\r\n - libvirt_domain_memory_stats_unused_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"})\r\n / libvirt_domain_memory_stats_actual_balloon_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}",
-                    "legendFormat": "{{domain}}",
+                    "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
                 }
@@ -1199,8 +1199,8 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "Vitual Machine",
+    "title": "VM",
     "uid": "d03b2ad1-acb5-4889-b5ea-5f8613995b07",
-    "version": 15,
+    "version": 20,
     "weekStart": ""
 }
