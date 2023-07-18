@@ -43,7 +43,7 @@ grafana_jsons = ["./host.json", "./libvirt.json"]
 
 targets = []
 for file in grafana_jsons:
-    targets.append(read_targets(file, target_id_len))
+    targets = targets + read_targets(file, target_id_len) 
 
 result_json = "./all_in_one.json"
 with open(result_json, 'r') as f:

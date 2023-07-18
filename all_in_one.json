@@ -99,293 +99,289 @@
                 }
             },
             "targets": [
-                [
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_user{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])), 0) / 1000",
-                        "legendFormat": "host_cpu_user",
-                        "range": true,
-                        "refId": "DWlSU"
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_sys{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by (instance), 0) / 1000",
-                        "hide": false,
-                        "legendFormat": "host_cpu_sys",
-                        "range": true,
-                        "refId": "ppED9"
+                    "editorMode": "code",
+                    "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_user{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])), 0) / 1000",
+                    "legendFormat": "host_cpu_user",
+                    "range": true,
+                    "refId": "H9cJl"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "node_cpu_scaling_frequency_hertz{instance=\"worknode:9100\", job=\"node_exporter\"} / 1000 / 1000",
-                        "legendFormat": "host_cpu_{{cpu}}",
-                        "range": true,
-                        "refId": "BnFh1"
+                    "editorMode": "code",
+                    "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_sys{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by (instance), 0) / 1000",
+                    "hide": false,
+                    "legendFormat": "host_cpu_sys",
+                    "range": true,
+                    "refId": "ROPkB"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "100 * (1- (node_memory_MemFree_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Buffers_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Cached_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}) \r\n / node_memory_MemTotal_bytes{instance=\"worknode:9100\", job=\"node_exporter\"})",
-                        "legendFormat": "host_memory_{{instance}}",
-                        "range": true,
-                        "refId": "NRaaB"
+                    "editorMode": "code",
+                    "expr": "node_cpu_scaling_frequency_hertz{instance=\"worknode:9100\", job=\"node_exporter\", cpu=\"131\"} / 1000 / 1000",
+                    "legendFormat": "host_cpu_{{cpu}}",
+                    "range": true,
+                    "refId": "iYAcx"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s]))",
-                        "legendFormat": "host_network_io_receive",
-                        "range": true,
-                        "refId": "uM2GG"
+                    "editorMode": "code",
+                    "expr": "100 * (1- (node_memory_MemFree_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Buffers_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Cached_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}) \r\n / node_memory_MemTotal_bytes{instance=\"worknode:9100\", job=\"node_exporter\"})",
+                    "legendFormat": "host_memory_{{instance}}",
+                    "range": true,
+                    "refId": "wv5yL"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s]))",
-                        "hide": false,
-                        "legendFormat": "host_network_io_transmit",
-                        "range": true,
-                        "refId": "4gZCC"
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s]))",
+                    "legendFormat": "host_network_io_receive",
+                    "range": true,
+                    "refId": "c8IuU"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s]))",
-                        "legendFormat": "host_network_io_receive",
-                        "range": true,
-                        "refId": "yrbRL"
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[30s]))",
+                    "hide": false,
+                    "legendFormat": "host_network_io_transmit",
+                    "range": true,
+                    "refId": "Ycvju"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s]))",
-                        "hide": false,
-                        "legendFormat": "host_network_io_transmit",
-                        "range": true,
-                        "refId": "h8d8x"
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s]))",
+                    "legendFormat": "host_network_io_receive",
+                    "range": true,
+                    "refId": "Wej71"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s])",
-                        "legendFormat": "host_block_io_{{device}}",
-                        "range": true,
-                        "refId": "EXygk"
-                    }
-                ],
-                [
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "clamp_min(irate(libvirt_domain_cpu_time_sys{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s]), 0) / 1000",
-                        "legendFormat": "vitual_machine_cpu_sys",
-                        "range": true,
-                        "refId": "okomb"
+                    "editorMode": "code",
+                    "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s]))",
+                    "hide": false,
+                    "legendFormat": "host_network_io_transmit",
+                    "range": true,
+                    "refId": "gbseG"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "clamp_min(irate(libvirt_domain_cpu_time_user{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s]), 0) / 1000",
-                        "hide": false,
-                        "legendFormat": "vitual_machine_cpu_user",
-                        "range": true,
-                        "refId": "QKcBr"
+                    "editorMode": "code",
+                    "expr": "irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[10s])",
+                    "legendFormat": "host_block_io_{{device}}",
+                    "range": true,
+                    "refId": "lfubk"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"cpu_cycles\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 1)",
-                        "legendFormat": "vitual_machine_cpu",
-                        "range": true,
-                        "refId": "C04vw"
+                    "editorMode": "code",
+                    "expr": "clamp_min(irate(libvirt_domain_cpu_time_sys{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s]), 0) / 1000",
+                    "legendFormat": "vitual_machine_cpu_sys",
+                    "range": true,
+                    "refId": "DvPWd"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s])",
-                        "legendFormat": "vitual_machine_cpu_{{domain}}",
-                        "range": true,
-                        "refId": "GzvOd"
+                    "editorMode": "code",
+                    "expr": "clamp_min(irate(libvirt_domain_cpu_time_user{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s]), 0) / 1000",
+                    "hide": false,
+                    "legendFormat": "vitual_machine_cpu_user",
+                    "range": true,
+                    "refId": "lXBEF"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_vcpu_time_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain) / 1000",
-                        "legendFormat": "vitual_machine_cpu_{{domain}}",
-                        "range": true,
-                        "refId": "MwwoQ"
+                    "editorMode": "code",
+                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"cpu_cycles\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 1)",
+                    "legendFormat": "vitual_machine_cpu",
+                    "range": true,
+                    "refId": "pQksV"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"context_switch\"}[3s]), 0)",
-                        "legendFormat": "vitual_machine_cpu_{{domain}}",
-                        "range": true,
-                        "refId": "mA5zO"
+                    "editorMode": "code",
+                    "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s])",
+                    "legendFormat": "vitual_machine_cpu_{{domain}}",
+                    "range": true,
+                    "refId": "V11Eh"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "1000 * clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\",instance=\"worknode:9177\", job=\"libvirt_exporter\",event=\"cache_misses\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 0)",
-                        "legendFormat": "vitual_machine_cache",
-                        "range": true,
-                        "refId": "UuvT6"
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_vcpu_time_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain) / 1000",
+                    "legendFormat": "vitual_machine_cpu_{{domain}}",
+                    "range": true,
+                    "refId": "VaCkB"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "100 * (libvirt_domain_memory_stats_available_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}\r\n - libvirt_domain_memory_stats_unused_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"})\r\n / libvirt_domain_memory_stats_actual_balloon_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}",
-                        "legendFormat": "vitual_machine_mem_{{domain}}",
-                        "range": true,
-                        "refId": "EdzRY"
+                    "editorMode": "code",
+                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"context_switch\"}[3s]), 0)",
+                    "legendFormat": "vitual_machine_cpu_{{domain}}",
+                    "range": true,
+                    "refId": "fIXHl"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_interface_stats_receive_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance) / 1024",
-                        "legendFormat": "vitual_machine_network_io_receive",
-                        "range": true,
-                        "refId": "bLf7X"
+                    "editorMode": "code",
+                    "expr": "1000 * clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\",instance=\"worknode:9177\", job=\"libvirt_exporter\",event=\"cache_misses\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 0)",
+                    "legendFormat": "vitual_machine_cache",
+                    "range": true,
+                    "refId": "r7XDb"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_interface_stats_transmit_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance) / 1024",
-                        "hide": false,
-                        "legendFormat": "vitual_machine_network_io_transmit",
-                        "range": true,
-                        "refId": "1AZJk"
+                    "editorMode": "code",
+                    "expr": "100 * (libvirt_domain_memory_stats_available_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}\r\n - libvirt_domain_memory_stats_unused_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"})\r\n / libvirt_domain_memory_stats_actual_balloon_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}",
+                    "legendFormat": "vitual_machine_mem_{{domain}}",
+                    "range": true,
+                    "refId": "APUOL"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_interface_stats_receive_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance)",
-                        "legendFormat": "vitual_machine_network_io_receive",
-                        "range": true,
-                        "refId": "T4L8C"
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_receive_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance) / 1024",
+                    "legendFormat": "vitual_machine_network_io_receive",
+                    "range": true,
+                    "refId": "2evg7"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_interface_stats_transmit_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance)",
-                        "hide": false,
-                        "legendFormat": "vitual_machine_network_io_transmit",
-                        "range": true,
-                        "refId": "UnMhl"
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_transmit_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance) / 1024",
+                    "hide": false,
+                    "legendFormat": "vitual_machine_network_io_transmit",
+                    "range": true,
+                    "refId": "tJUfP"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_block_stats_read_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain)",
-                        "legendFormat": "vitual_machine_block_io_read",
-                        "range": true,
-                        "refId": "wvIFh"
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_receive_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance)",
+                    "legendFormat": "vitual_machine_network_io_receive",
+                    "range": true,
+                    "refId": "hQony"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_block_stats_write_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain)",
-                        "hide": false,
-                        "legendFormat": "vitual_machine_block_io_write",
-                        "range": true,
-                        "refId": "k5HDy"
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_transmit_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance)",
+                    "hide": false,
+                    "legendFormat": "vitual_machine_network_io_transmit",
+                    "range": true,
+                    "refId": "mB5US"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_block_stats_write_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance, job)",
-                        "legendFormat": "vitual_machine_block_io_write",
-                        "range": true,
-                        "refId": "h0ciX"
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_block_stats_read_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain)",
+                    "legendFormat": "vitual_machine_block_io_read",
+                    "range": true,
+                    "refId": "8otFQ"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
                     },
-                    {
-                        "datasource": {
-                            "type": "prometheus",
-                            "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                        },
-                        "editorMode": "code",
-                        "expr": "sum(irate(libvirt_domain_block_stats_read_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance, job)",
-                        "hide": false,
-                        "legendFormat": "vitual_machine_block_io_read",
-                        "range": true,
-                        "refId": "ccUZf"
-                    }
-                ]
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_block_stats_write_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain)",
+                    "hide": false,
+                    "legendFormat": "vitual_machine_block_io_write",
+                    "range": true,
+                    "refId": "XMAC6"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_block_stats_write_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance, job)",
+                    "legendFormat": "vitual_machine_block_io_write",
+                    "range": true,
+                    "refId": "MDVRz"
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                    },
+                    "editorMode": "code",
+                    "expr": "sum(irate(libvirt_domain_block_stats_read_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance, job)",
+                    "hide": false,
+                    "legendFormat": "vitual_machine_block_io_read",
+                    "range": true,
+                    "refId": "utcVM"
+                }
             ],
             "title": "ALL IN ONE!",
             "type": "timeseries"
