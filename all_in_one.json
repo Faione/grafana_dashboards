@@ -108,7 +108,7 @@
                     "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_user{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])), 0) / 1000",
                     "legendFormat": "host_cpu_vcpu_time_user",
                     "range": true,
-                    "refId": "3ZYUg"
+                    "refId": "TC3mV"
                 },
                 {
                     "datasource": {
@@ -120,7 +120,7 @@
                     "hide": false,
                     "legendFormat": "host_cpu_vcpu_time_sys",
                     "range": true,
-                    "refId": "iPOYF"
+                    "refId": "vrsvk"
                 },
                 {
                     "datasource": {
@@ -131,7 +131,7 @@
                     "expr": "node_cpu_scaling_frequency_hertz{instance=\"worknode:9100\", job=\"node_exporter\", cpu=\"131\"} / 1000 / 1000",
                     "legendFormat": "host_cpu_scaling_freq_mhz",
                     "range": true,
-                    "refId": "dMF1h"
+                    "refId": "BdxmO"
                 },
                 {
                     "datasource": {
@@ -142,7 +142,7 @@
                     "expr": "100 * (1- (node_memory_MemFree_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Buffers_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Cached_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}) \r\n / node_memory_MemTotal_bytes{instance=\"worknode:9100\", job=\"node_exporter\"})",
                     "legendFormat": "host_memory_usage",
                     "range": true,
-                    "refId": "J0H3c"
+                    "refId": "M8A6v"
                 },
                 {
                     "datasource": {
@@ -153,7 +153,7 @@
                     "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "legendFormat": "host_network_io_bytes_receive",
                     "range": true,
-                    "refId": "mdK6e"
+                    "refId": "gazKP"
                 },
                 {
                     "datasource": {
@@ -165,7 +165,7 @@
                     "hide": false,
                     "legendFormat": "host_network_io_bytes_transmit",
                     "range": true,
-                    "refId": "fmVVV"
+                    "refId": "tTD74"
                 },
                 {
                     "datasource": {
@@ -176,7 +176,7 @@
                     "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
                     "legendFormat": "host_network_io_packets_receive",
                     "range": true,
-                    "refId": "bP6ig"
+                    "refId": "c0pcM"
                 },
                 {
                     "datasource": {
@@ -188,7 +188,7 @@
                     "hide": false,
                     "legendFormat": "host_network_io_packets_transmit",
                     "range": true,
-                    "refId": "MQuhb"
+                    "refId": "MRRLo"
                 },
                 {
                     "datasource": {
@@ -197,9 +197,9 @@
                     },
                     "editorMode": "code",
                     "expr": "sum(irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
-                    "legendFormat": "host_block_io_bytes_{{device}}",
+                    "legendFormat": "host_block_io_bytes",
                     "range": true,
-                    "refId": "JnMmA"
+                    "refId": "m6x5j"
                 },
                 {
                     "datasource": {
@@ -210,7 +210,7 @@
                     "expr": "clamp_min(irate(libvirt_domain_cpu_time_sys{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s]), 0) / 1000",
                     "legendFormat": "vm_cpu_time_sys",
                     "range": true,
-                    "refId": "Yng9Y"
+                    "refId": "1jnt4"
                 },
                 {
                     "datasource": {
@@ -222,7 +222,7 @@
                     "hide": false,
                     "legendFormat": "vm_cpu_time_user",
                     "range": true,
-                    "refId": "9GQRN"
+                    "refId": "x4Qrv"
                 },
                 {
                     "datasource": {
@@ -233,7 +233,7 @@
                     "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"cpu_cycles\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 1)",
                     "legendFormat": "vm_cpu_cpi",
                     "range": true,
-                    "refId": "gczm1"
+                    "refId": "ghbUc"
                 },
                 {
                     "datasource": {
@@ -244,7 +244,7 @@
                     "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s])",
                     "legendFormat": "vm_cpu_ips",
                     "range": true,
-                    "refId": "oSp8j"
+                    "refId": "uz9Ej"
                 },
                 {
                     "datasource": {
@@ -255,7 +255,7 @@
                     "expr": "sum(irate(libvirt_domain_vcpu_time_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain) / 1000",
                     "legendFormat": "vm_cpu_vcpu_time",
                     "range": true,
-                    "refId": "uiwNR"
+                    "refId": "0lnDS"
                 },
                 {
                     "datasource": {
@@ -266,7 +266,7 @@
                     "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"context_switch\"}[3s]) , 0)",
                     "legendFormat": "vm_cpu_context_switch",
                     "range": true,
-                    "refId": "NIZ55"
+                    "refId": "9IdPF"
                 },
                 {
                     "datasource": {
@@ -277,7 +277,7 @@
                     "expr": "1000 * clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\",instance=\"worknode:9177\", job=\"libvirt_exporter\",event=\"cache_misses\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 0)",
                     "legendFormat": "vm_cache_mkpi",
                     "range": true,
-                    "refId": "t47A1"
+                    "refId": "dqcCX"
                 },
                 {
                     "datasource": {
@@ -288,7 +288,7 @@
                     "expr": "100 * (libvirt_domain_memory_stats_available_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}\r\n - libvirt_domain_memory_stats_unused_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"})\r\n / libvirt_domain_memory_stats_actual_balloon_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}",
                     "legendFormat": "vm_mem_usage",
                     "range": true,
-                    "refId": "Wvedq"
+                    "refId": "MfKNX"
                 },
                 {
                     "datasource": {
@@ -299,7 +299,7 @@
                     "expr": "sum(irate(libvirt_domain_interface_stats_receive_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance) / 1024",
                     "legendFormat": "vm_network_io_bytes_receive",
                     "range": true,
-                    "refId": "TOdbv"
+                    "refId": "dcBy6"
                 },
                 {
                     "datasource": {
@@ -311,7 +311,7 @@
                     "hide": false,
                     "legendFormat": "vm_network_io_bytes_transmit",
                     "range": true,
-                    "refId": "ersh7"
+                    "refId": "CNAag"
                 },
                 {
                     "datasource": {
@@ -322,7 +322,7 @@
                     "expr": "sum(irate(libvirt_domain_interface_stats_receive_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance)",
                     "legendFormat": "vm_network_io_packets_receive",
                     "range": true,
-                    "refId": "MtsbC"
+                    "refId": "CjqzQ"
                 },
                 {
                     "datasource": {
@@ -334,7 +334,7 @@
                     "hide": false,
                     "legendFormat": "vm_network_io_packets_transmit",
                     "range": true,
-                    "refId": "JAIE9"
+                    "refId": "1Pk34"
                 },
                 {
                     "datasource": {
@@ -345,7 +345,7 @@
                     "expr": "sum(irate(libvirt_domain_block_stats_read_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain)",
                     "legendFormat": "vm_block_io_bytes_read",
                     "range": true,
-                    "refId": "J3fq3"
+                    "refId": "vTilv"
                 },
                 {
                     "datasource": {
@@ -357,7 +357,7 @@
                     "hide": false,
                     "legendFormat": "vm_block_io_bytes_write",
                     "range": true,
-                    "refId": "11Yjp"
+                    "refId": "rPnal"
                 },
                 {
                     "datasource": {
@@ -368,7 +368,7 @@
                     "expr": "sum(irate(libvirt_domain_block_stats_write_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance, job)",
                     "legendFormat": "vm_block_io_requests_write",
                     "range": true,
-                    "refId": "gzBC1"
+                    "refId": "cvK6s"
                 },
                 {
                     "datasource": {
@@ -380,7 +380,7 @@
                     "hide": false,
                     "legendFormat": "vm_block_io_requests_read",
                     "range": true,
-                    "refId": "usQxc"
+                    "refId": "rhp5a"
                 }
             ],
             "title": "ALL IN ONE!",

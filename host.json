@@ -617,7 +617,8 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green"
+                                "color": "green",
+                                "value": null
                             },
                             {
                                 "color": "red",
@@ -655,7 +656,7 @@
                     },
                     "editorMode": "code",
                     "expr": "sum(irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
-                    "legendFormat": "{{device}}",
+                    "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
                 }
@@ -679,6 +680,6 @@
     "timezone": "",
     "title": "Host",
     "uid": "a95e533c-661b-434d-b1c8-6271733b22ca",
-    "version": 12,
+    "version": 13,
     "weekStart": ""
 }
