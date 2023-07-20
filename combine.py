@@ -61,4 +61,21 @@ with open(result_json, 'w') as f:
     json.dump(data, f)
 
 
+schemas = [{"targetField": target["legendFormat"], "destinationType": "number"} for target in targets]
+
+schemas.append({"targetField": "\"Time\"", "destinationType": "time"})
+offline_json = "./offline.json"
+with open(offline_json, 'r') as f:
+    data = json.load(f)
+
+    try:
+        data["panels"][0]["transformations"][0]["options"]["conversions"] = schemas
+        
+    except:
+        print("invalid grafana format")
+        sys.exit(1)
+
+with open(offline_json, 'w') as f:
+    json.dump(data, f)
+
 

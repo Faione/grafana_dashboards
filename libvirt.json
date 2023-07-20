@@ -39,7 +39,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -116,10 +116,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "clamp_min(irate(libvirt_domain_cpu_time_sys{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s]), 0) / 1000",
+                    "expr": "clamp_min(irate(libvirt_domain_cpu_time_sys{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval]), 0) / 1000",
                     "legendFormat": "sys",
                     "range": true,
                     "refId": "A"
@@ -127,10 +127,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "clamp_min(irate(libvirt_domain_cpu_time_user{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s]), 0) / 1000",
+                    "expr": "clamp_min(irate(libvirt_domain_cpu_time_user{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval]), 0) / 1000",
                     "hide": false,
                     "legendFormat": "user",
                     "range": true,
@@ -143,7 +143,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -203,7 +203,7 @@
                 "x": 4,
                 "y": 1
             },
-            "id": 3,
+            "id": 5,
             "options": {
                 "legend": {
                     "calcs": [],
@@ -220,22 +220,22 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"cpu_cycles\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 1)",
+                    "expr": "sum(irate(libvirt_domain_vcpu_time_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain) / 1000",
                     "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
                 }
             ],
-            "title": "CPI",
+            "title": "VCPU Time",
             "type": "timeseries"
         },
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -295,190 +295,6 @@
                 "x": 8,
                 "y": 1
             },
-            "id": 16,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                    },
-                    "editorMode": "code",
-                    "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s])",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "IPS",
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 4,
-                "x": 12,
-                "y": 1
-            },
-            "id": 5,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                    },
-                    "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_vcpu_time_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain) / 1000",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "VCPU Time",
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 4,
-                "x": 16,
-                "y": 1
-            },
             "id": 4,
             "options": {
                 "legend": {
@@ -496,10 +312,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"context_switch\"}[3s]) , 0)",
+                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"context_switch\"}[$__interval]) , 0)",
                     "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
@@ -509,22 +325,9 @@
             "type": "timeseries"
         },
         {
-            "collapsed": false,
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 9
-            },
-            "id": 6,
-            "panels": [],
-            "title": "Cache",
-            "type": "row"
-        },
-        {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -582,7 +385,388 @@
                 "h": 8,
                 "w": 4,
                 "x": 0,
-                "y": 10
+                "y": 9
+            },
+            "id": 3,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+                    },
+                    "editorMode": "code",
+                    "expr": "clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"cpu_cycles\"}[$__interval]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[$__interval]), 1)",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "CPI",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 4,
+                "x": 4,
+                "y": 9
+            },
+            "id": 16,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[$__interval])",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "IPS",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 4,
+                "x": 0,
+                "y": 17
+            },
+            "id": 18,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+                    },
+                    "editorMode": "code",
+                    "expr": "1000 * clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\",instance=\"worknode:9177\", job=\"libvirt_exporter\",event=\"branch_misses\"}[$__interval]), 0)\r\n/on(domain)\r\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"branch_instructions\"}[$__interval]), 0)",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "BMPBI",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 4,
+                "x": 4,
+                "y": 17
+            },
+            "id": 17,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"branch_instructions\"}[$__interval])",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Branch IPS",
+            "type": "timeseries"
+        },
+        {
+            "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 25
+            },
+            "id": 6,
+            "panels": [],
+            "title": "Cache",
+            "type": "row"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 4,
+                "x": 0,
+                "y": 26
             },
             "id": 7,
             "options": {
@@ -601,10 +785,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "1000 * clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\",instance=\"worknode:9177\", job=\"libvirt_exporter\",event=\"cache_misses\"}[3s]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[3s]), 0)",
+                    "expr": "1000 * clamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\",instance=\"worknode:9177\", job=\"libvirt_exporter\",event=\"cache_misses\"}[$__interval]), 0)\n/on(domain)\nclamp_min(idelta(libvirt_domain_perf_count{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\", event=\"instructions\"}[$__interval]), 0)",
                     "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
@@ -619,7 +803,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 18
+                "y": 34
             },
             "id": 8,
             "panels": [],
@@ -629,112 +813,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 4,
-                "x": 0,
-                "y": 19
-            },
-            "id": 9,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
-                    },
-                    "editorMode": "code",
-                    "expr": "100 * (libvirt_domain_memory_stats_available_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}\r\n - libvirt_domain_memory_stats_unused_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"})\r\n / libvirt_domain_memory_stats_actual_balloon_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}",
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Usage",
-            "type": "timeseries"
-        },
-        {
-            "collapsed": false,
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 27
-            },
-            "id": 10,
-            "panels": [],
-            "title": "Network IO",
-            "type": "row"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -791,7 +870,111 @@
                 "h": 8,
                 "w": 4,
                 "x": 0,
-                "y": 28
+                "y": 35
+            },
+            "id": 9,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+                    },
+                    "editorMode": "code",
+                    "expr": "100 * (libvirt_domain_memory_stats_available_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}\r\n - libvirt_domain_memory_stats_unused_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"})\r\n / libvirt_domain_memory_stats_actual_balloon_bytes{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Usage",
+            "type": "timeseries"
+        },
+        {
+            "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 43
+            },
+            "id": 10,
+            "panels": [],
+            "title": "Network IO",
+            "type": "row"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 4,
+                "x": 0,
+                "y": 44
             },
             "id": 11,
             "options": {
@@ -810,10 +993,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_interface_stats_receive_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance) / 1024",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_receive_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain, instance) / 1024",
                     "legendFormat": "receive",
                     "range": true,
                     "refId": "A"
@@ -821,10 +1004,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_interface_stats_transmit_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance) / 1024",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_transmit_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain, instance) / 1024",
                     "hide": false,
                     "legendFormat": "transmit",
                     "range": true,
@@ -837,7 +1020,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -919,7 +1102,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 4,
-                "y": 28
+                "y": 44
             },
             "id": 12,
             "options": {
@@ -938,10 +1121,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_interface_stats_receive_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance)",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_receive_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain, instance)",
                     "legendFormat": "receive",
                     "range": true,
                     "refId": "A"
@@ -949,10 +1132,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_interface_stats_transmit_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance)",
+                    "expr": "sum(irate(libvirt_domain_interface_stats_transmit_packets_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain, instance)",
                     "hide": false,
                     "legendFormat": "transmit",
                     "range": true,
@@ -968,7 +1151,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 36
+                "y": 52
             },
             "id": 13,
             "panels": [],
@@ -978,7 +1161,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -1035,7 +1218,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 0,
-                "y": 37
+                "y": 53
             },
             "id": 14,
             "options": {
@@ -1054,10 +1237,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_block_stats_read_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain)",
+                    "expr": "sum(irate(libvirt_domain_block_stats_read_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain)",
                     "legendFormat": "read",
                     "range": true,
                     "refId": "A"
@@ -1065,10 +1248,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_block_stats_write_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain)",
+                    "expr": "sum(irate(libvirt_domain_block_stats_write_bytes_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain)",
                     "hide": false,
                     "legendFormat": "write",
                     "range": true,
@@ -1081,7 +1264,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -1138,7 +1321,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 4,
-                "y": 37
+                "y": 53
             },
             "id": 15,
             "options": {
@@ -1157,10 +1340,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_block_stats_write_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance, job)",
+                    "expr": "sum(irate(libvirt_domain_block_stats_write_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain, instance, job)",
                     "legendFormat": "write",
                     "range": true,
                     "refId": "A"
@@ -1168,10 +1351,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(libvirt_domain_block_stats_read_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by(domain, instance, job)",
+                    "expr": "sum(irate(libvirt_domain_block_stats_read_requests_total{domain=\"podman-alpine317_default\", instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by(domain, instance, job)",
                     "hide": false,
                     "legendFormat": "read",
                     "range": true,
@@ -1197,6 +1380,6 @@
     "timezone": "",
     "title": "VM",
     "uid": "d03b2ad1-acb5-4889-b5ea-5f8613995b07",
-    "version": 21,
+    "version": 3,
     "weekStart": ""
 }

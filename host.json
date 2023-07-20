@@ -19,17 +19,214 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 3,
+    "id": 1,
     "links": [],
     "liveNow": false,
     "panels": [
+        {
+            "collapsed": true,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 11,
+            "panels": [],
+            "title": "Kernel",
+            "type": "row"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 4,
+                "x": 0,
+                "y": 1
+            },
+            "id": 12,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(node_intr_total{instance=\"worknode:9100\", job=\"node_exporter\"}[$__interval])",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Interrupt",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 4,
+                "x": 4,
+                "y": 1
+            },
+            "id": 13,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
+                    },
+                    "editorMode": "code",
+                    "expr": "irate(node_context_switches_total{instance=\"worknode:9100\", job=\"node_exporter\"}[$__interval])",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Context Switch",
+            "type": "timeseries"
+        },
         {
             "collapsed": false,
             "gridPos": {
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 0
+                "y": 9
             },
             "id": 7,
             "panels": [],
@@ -39,7 +236,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "description": "CPU Usage of All VMs on Host, split by user / sys",
             "fieldConfig": {
@@ -98,7 +295,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 0,
-                "y": 1
+                "y": 10
             },
             "id": 6,
             "options": {
@@ -117,10 +314,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
-                    "editorMode": "code",
-                    "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_user{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])), 0) / 1000",
+                    "editorMode": "builder",
+                    "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_user{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])), 0) / 1000",
                     "legendFormat": "user",
                     "range": true,
                     "refId": "A"
@@ -128,10 +325,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_sys{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[3s])) by (instance), 0) / 1000",
+                    "expr": "clamp_min(sum(irate(libvirt_domain_cpu_time_sys{instance=\"worknode:9177\", job=\"libvirt_exporter\"}[$__interval])) by (instance), 0) / 1000",
                     "hide": false,
                     "legendFormat": "sys",
                     "range": true,
@@ -144,7 +341,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -202,7 +399,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 4,
-                "y": 1
+                "y": 10
             },
             "id": 10,
             "options": {
@@ -221,7 +418,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
                     "expr": "node_cpu_scaling_frequency_hertz{instance=\"worknode:9100\", job=\"node_exporter\", cpu=\"131\"} / 1000 / 1000",
@@ -239,7 +436,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 9
+                "y": 18
             },
             "id": 2,
             "panels": [],
@@ -249,7 +446,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -307,7 +504,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 0,
-                "y": 10
+                "y": 19
             },
             "id": 1,
             "options": {
@@ -326,7 +523,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
                     "expr": "100 * (1- (node_memory_MemFree_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Buffers_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}\r\n + node_memory_Cached_bytes{instance=\"worknode:9100\", job=\"node_exporter\"}) \r\n / node_memory_MemTotal_bytes{instance=\"worknode:9100\", job=\"node_exporter\"})",
@@ -344,7 +541,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 18
+                "y": 27
             },
             "id": 4,
             "panels": [],
@@ -354,7 +551,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -396,8 +593,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -412,7 +608,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 0,
-                "y": 19
+                "y": 28
             },
             "id": 3,
             "options": {
@@ -431,10 +627,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
+                    "expr": "sum(irate(node_network_receive_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[$__interval]))",
                     "legendFormat": "receive",
                     "range": true,
                     "refId": "A"
@@ -442,10 +638,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
+                    "expr": "sum(irate(node_network_transmit_bytes_total{device=~\"enp26s0f.*\", instance=\"worknode:9100\", job=\"node_exporter\"}[$__interval]))",
                     "hide": false,
                     "legendFormat": "transmit",
                     "range": true,
@@ -458,7 +654,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -500,8 +696,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -516,7 +711,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 4,
-                "y": 19
+                "y": 28
             },
             "id": 5,
             "options": {
@@ -535,10 +730,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
+                    "expr": "sum(irate(node_network_receive_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[$__interval]))",
                     "legendFormat": "receive",
                     "range": true,
                     "refId": "A"
@@ -546,10 +741,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
+                    "expr": "sum(irate(node_network_transmit_packets_total{instance=\"worknode:9100\", job=\"node_exporter\"}[$__interval]))",
                     "hide": false,
                     "legendFormat": "transmit",
                     "range": true,
@@ -565,7 +760,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 27
+                "y": 36
             },
             "id": 8,
             "panels": [],
@@ -575,7 +770,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
             },
             "fieldConfig": {
                 "defaults": {
@@ -617,8 +812,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -633,7 +827,7 @@
                 "h": 8,
                 "w": 4,
                 "x": 0,
-                "y": 28
+                "y": 37
             },
             "id": 9,
             "options": {
@@ -652,10 +846,10 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "eb610732-db7c-4ee6-b2f0-f0f27538821a"
+                        "uid": "f3cb7d29-8542-4950-92d8-8358fcdcd9b9"
                     },
                     "editorMode": "code",
-                    "expr": "sum(irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[4s]))",
+                    "expr": "sum(irate(node_disk_read_bytes_total{instance=\"worknode:9100\", job=\"node_exporter\"}[$__interval]))",
                     "legendFormat": "__auto",
                     "range": true,
                     "refId": "A"
@@ -680,6 +874,6 @@
     "timezone": "",
     "title": "Host",
     "uid": "a95e533c-661b-434d-b1c8-6271733b22ca",
-    "version": 13,
+    "version": 3,
     "weekStart": ""
 }
