@@ -19,13 +19,16 @@ def read_targets(file_name, target_id_len = 5):
     targets = []
     current_namespace = data["title"]
     current_subsystem = ""
+
     for panel in data["panels"]:
         if panel["type"] == "row":
             # do row
             current_subsystem = panel["title"]
+           
         elif panel["type"] == "timeseries":
             # do timeseries
             current_name = panel["title"]
+            
             for target in panel["targets"]:
                 target["refId"] = generate_random_string(target_id_len)
 
