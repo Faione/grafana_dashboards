@@ -13,7 +13,7 @@ def generate_random_string(length):
 # 读取每个panel中的 target
 # 将 target 的 legend 命名为 namespace + subsystem + title + [name]
 def read_targets(file_name, target_id_len = 5):
-    with open(file_name, 'r') as f:
+    with open(file_name, 'r', encoding="utf-8") as f:
         data = json.load(f)
     
     targets = []
